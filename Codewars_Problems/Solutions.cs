@@ -59,6 +59,17 @@ namespace Codewars_Problems
             }
             return result.TrimEnd('-');
         }
+        // Problem 3 : Fake Binary (8 KYU)
+
+        public static string FakeBin(string x)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (char c in x)
+            {
+                sb.Append(c >= '5' ? '1' : '0');
+            }
+            return sb.ToString();
+        }
 
 
     }

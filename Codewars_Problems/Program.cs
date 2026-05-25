@@ -8,40 +8,19 @@ namespace Codewars_Problems
 {
     internal class Program
     {
-        public static string Accum(string s)
+        public static string FakeBin(string x)
         {
-            if (s.Length < 1)  return "";
-
             StringBuilder sb = new StringBuilder();
-            int Count = 0;
-            foreach(char c in s.ToLower())
+            foreach(char c in x)
             {
-                sb.Append(char.ToUpper(c))
-                    .Append(c, Count++)
-                    .Append('-');
+                sb.Append(c >= '5' ? '1' : '0');
             }
-            return sb.ToString().TrimEnd('-');
-        }
-        public static string Accum2(string s)
-        {
-            s = s.ToLower();
-            string word = "";
-            string result = "";
-            for(int i = 0; i < s.Length; i++)
-            {
-                word = "";
-                for(int j = 0; j <= i; j++)
-                {
-                    word += s[i];
-                }
-                result += char.ToUpper(word[0]) + word.Substring(1) + "-";
-            }
-            return result.TrimEnd('-'); 
+            return sb.ToString();
         }
 
         static void Main(string[] args)
         {
-            Console.WriteLine(Accum("abcd"));
+            Console.WriteLine(FakeBin("51483"));
         }
     }
 }
