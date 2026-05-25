@@ -8,22 +8,40 @@ namespace Codewars_Problems
 {
     internal class Program
     {
-
-        public static string Smash(string[] words)
+        public static string Accum(string s)
         {
-            string s = "";
-            foreach (string w in words)
+            if (s.Length < 1)  return "";
+
+            StringBuilder sb = new StringBuilder();
+            int Count = 0;
+            foreach(char c in s.ToLower())
             {
-                s += w + " ";
+                sb.Append(char.ToUpper(c))
+                    .Append(c, Count++)
+                    .Append('-');
             }
-            s = s.Substring(0, s.Length - 1);
-            return s;
+            return sb.ToString().TrimEnd('-');
+        }
+        public static string Accum2(string s)
+        {
+            s = s.ToLower();
+            string word = "";
+            string result = "";
+            for(int i = 0; i < s.Length; i++)
+            {
+                word = "";
+                for(int j = 0; j <= i; j++)
+                {
+                    word += s[i];
+                }
+                result += char.ToUpper(word[0]) + word.Substring(1) + "-";
+            }
+            return result.TrimEnd('-'); 
         }
 
         static void Main(string[] args)
         {
-            string[] words = { "hello", "world", "this", "is", "great" };
-            Console.WriteLine(Smash(words));
+            Console.WriteLine(Accum("abcd"));
         }
     }
 }

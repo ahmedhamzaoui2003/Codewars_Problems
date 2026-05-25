@@ -9,7 +9,7 @@ namespace Codewars_Problems
     internal class Solutions
     {
         // Problem 1 : You only need one - Beginner
-        // 1st method : using some logic 
+        // 1st method : using some logic (8 KYU)
         public static string Smash(string[] words)
         {
             string s = "";
@@ -24,6 +24,40 @@ namespace Codewars_Problems
         public static string Smash2(string[] words)
         {
             return string.Join(" ",words);
+        }
+
+        // Problem 2 : Mumbling (7 KYU)
+        // 1st method : using stringBuilder()
+        public static string Accum(string s)
+        {
+            if (s.Length < 1) return "";
+
+            StringBuilder sb = new StringBuilder();
+            int Count = 0;
+            foreach (char c in s.ToLower())
+            {
+                sb.Append(char.ToUpper(c))
+                    .Append(c, Count++)
+                    .Append('-');
+            }
+            return sb.ToString().TrimEnd('-');
+        }
+        //2nd method : using normal logic 
+        public static string Accum2(string s)
+        {
+            s = s.ToLower();
+            string word = "";
+            string result = "";
+            for (int i = 0; i < s.Length; i++)
+            {
+                word = "";
+                for (int j = 0; j <= i; j++)
+                {
+                    word += s[i];
+                }
+                result += char.ToUpper(word[0]) + word.Substring(1) + "-";
+            }
+            return result.TrimEnd('-');
         }
 
 
