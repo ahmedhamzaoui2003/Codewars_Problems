@@ -8,19 +8,33 @@ namespace Codewars_Problems
 {
     internal class Program
     {
-        public static string FakeBin(string x)
+        public static string[] StringToArray(string str)
         {
-            StringBuilder sb = new StringBuilder();
-            foreach(char c in x)
+            List<string> arr = new List<string>();
+            while(str.IndexOf(" ") != -1)
             {
-                sb.Append(c >= '5' ? '1' : '0');
+                int pos = str.IndexOf(" ");
+                string word = str.Substring(0, pos);
+                arr.Add(word);
+
+                str = str.Remove(0, pos+1);
+                word = "";
             }
-            return sb.ToString();
+            if (str != "")
+                arr.Add(str);
+            return arr.ToArray();
+
+
+
+
+            /*return str.Split(' ');*/
         }
 
         static void Main(string[] args)
         {
-            Console.WriteLine(FakeBin("51483"));
+            string[] words = StringToArray("I love arrays they are my favorite");
+            foreach(string s in words)
+                Console.Write(s);
         }
     }
 }

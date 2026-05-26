@@ -71,6 +71,31 @@ namespace Codewars_Problems
             return sb.ToString();
         }
 
+        // Problem 4 : Convert a string to an array (8 KYU)
+        // 1st method : slow method (without built-in function)
+        public static string[] StringToArray(string str)
+        {
+            List<string> arr = new List<string>();
+            while (str.IndexOf(" ") != -1)
+            {
+                int pos = str.IndexOf(" ");
+                string word = str.Substring(0, pos);
+                arr.Add(word);
+
+                str = str.Remove(0, pos + 1);
+                word = "";
+            }
+            if (str != "")
+                arr.Add(str);
+            return arr.ToArray();
+            
+        }
+
+        //2nd method : fast and using Split() function 
+        public static string[] StringToArray2(string str)
+        {
+            return str.Split(' ');
+        }
 
     }
 }
